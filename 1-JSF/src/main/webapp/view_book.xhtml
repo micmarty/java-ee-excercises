@@ -12,12 +12,8 @@
     </h:head>
     <h:body>
         <h:panelGrid columns="2">
-            <h:outputLabel value="Tytuł:" for="title"/>
+            <h:outputLabel value="Ilość drzew: " for="title"/>
             <h:outputText id="title" value="#{viewLas.las.liczbaDrzew}"/>
-            <!--<h:outputLabel value="Data wydania:" for="date"/>-->
-            <!--<h:outputText id="date" value="#{viewLas.las.publishDate}">-->
-                <!--<f:convertDateTime pattern="yyyy-MM-dd"/>-->
-            <!--</h:outputText>-->
         </h:panelGrid>
         <h:button value="Powrót" outcome="list_books.xhtml"/>
     </h:body>
