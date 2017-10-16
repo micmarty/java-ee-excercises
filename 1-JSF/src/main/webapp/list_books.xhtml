@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Książki</title>
+    </h:head>
+    <h:body>
+        <h:dataTable value="#{listBooks.books}" var="book">
+            <h:column>
+                <h:outputText value="#{book.id}" />
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{book.title}" escape="true" />
+            </h:column>
+
+            <h:column>
+                <h:dataTable value="#{book.authors}" var="author">
+                    <h:column>
+                        <h:outputText value="#{author.name}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{author.surname}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{book.publishDate}">
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:outputText>
+            </h:column>
+
+            <h:column>
+                <h:button value="Pokaż" outcome="view_book.xhtml">
+                    <f:param name="bookId" value="#{book.id}" />
+                </h:button>
+            </h:column>
+
+            <h:column>
+                <h:button value="Edytuj" outcome="edit_book.xhtml">
+                    <f:param name="bookId" value="#{book.id}" />
+                </h:button>
+            </h:column>
+
+            <h:column>
+                <!--<form action="/delete/">-->
+                    <!--<input type="hidden" name="id" value="2"/>-->
+                    <!--<input type="submit"/>-->
+                <!--</form>-->
+
+                <h:form>
+                    <h:commandButton value="Usuń"
+                       action="#{listBooks.removeBook(book)}"/>
+                </h:form>
+
+            </h:column>
+        </h:dataTable>
+        <h:button value="Nowa" outcome="edit_book.xhtml"/>
+    </h:body>
+</html>

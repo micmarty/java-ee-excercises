@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:metadata>
+        <f:viewParam name="bookId" value="#{editBook.bookId}" />
+        <f:event type="preRenderView" listener="#{editBook.init()}"/>
+    </f:metadata>
+    <h:head>
+        <title>#{editBook.book}</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <h:panelGrid columns="3" styleClass="tabela">
+                <h:outputLabel value="Tytuł:" for="title"/>
+                <h:inputText id="title"
+                             value="#{editBook.book.title}"
+                             validator="#{bookTitleValidator.validate}"/>
+                <h:message for="title"/>
+                
+                <h:outputLabel value="Data wydania (RRRR-MM-DD):" for="date"/>
+                <h:inputText id="date" value="#{editBook.book.publishDate}" >
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="date"/>
+
+                <h:outputLabel value="Autorzy:" for="authors"/>
+
+                <h:selectManyListbox id="authors" value="#{editBook.book.authors}" converter="#{authorConverter}">
+                    <f:selectItems value="#{editBook.authorsAsSelectItems}"/>
+                </h:selectManyListbox>
+
+                <h:message for="authors"/>
+            </h:panelGrid>
+            
+            <h:commandButton value="Zapisz" action="#{editBook.saveBook()}"/>
+
+        </h:form>
+        <h:button value="Powrót" outcome="list_books.xhtml"/>
+    </h:body>
+</html>
