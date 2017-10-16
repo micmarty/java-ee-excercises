@@ -4,44 +4,51 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Książki</title>
+        <title>Katalog lasów i ich mieszkańców.</title>
+        <h:outputStylesheet library="css" name="table-style.css"  />
+
     </h:head>
     <h:body>
-        <h:dataTable value="#{listBooks.books}" var="book">
+        
+        <h:dataTable value="#{listLasy.lasy}" var="las"
+                     styleClass="order-table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row">
             <h:column>
-                <h:outputText value="#{book.id}" />
+                <h:outputText value="#{las.id}" />
             </h:column>
 
             <h:column>
-                <h:outputText value="#{book.title}" escape="true" />
+                <h:outputText value="#{las.liczbaDrzew}" />
             </h:column>
 
             <h:column>
-                <h:dataTable value="#{book.authors}" var="author">
+                <h:dataTable value="#{las.elfy}" var="elf">
                     <h:column>
-                        <h:outputText value="#{author.name}"/>
+                        <h:outputText value="#{elf.imie}"/>
                     </h:column>
                     <h:column>
-                        <h:outputText value="#{author.surname}"/>
+                        <h:outputText value="| strzał: #{elf.liczbaStrzal}"/>
                     </h:column>
                 </h:dataTable>
             </h:column>
 
-            <h:column>
-                <h:outputText value="#{book.publishDate}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
-                </h:outputText>
-            </h:column>
+            <!-- TODO dodać enuma -->
+            <!--<h:column>-->
+                <!--<h:outputText value="#{book.publishDate}">-->
+                    <!--<f:convertDateTime pattern="yyyy-MM-dd"/>-->
+                <!--</h:outputText>-->
+            <!--</h:column>-->
 
             <h:column>
                 <h:button value="Pokaż" outcome="view_book.xhtml">
-                    <f:param name="bookId" value="#{book.id}" />
+                    <f:param name="lasId" value="#{las.id}" />
                 </h:button>
             </h:column>
 
             <h:column>
-                <h:button value="Edytuj" outcome="edit_book.xhtml">
-                    <f:param name="bookId" value="#{book.id}" />
+                <h:button value="Edytuj" outcome="edit_las.xhtml">
+                    <f:param name="lasId" value="#{las.id}" />
                 </h:button>
             </h:column>
 
@@ -53,11 +60,11 @@
 
                 <h:form>
                     <h:commandButton value="Usuń"
-                       action="#{listBooks.removeBook(book)}"/>
+                       action="#{listLasy.removeLas(las)}"/>
                 </h:form>
 
             </h:column>
         </h:dataTable>
-        <h:button value="Nowa" outcome="edit_book.xhtml"/>
+        <h:button value="Nowa" outcome="edit_las.xhtml"/>
     </h:body>
 </html>

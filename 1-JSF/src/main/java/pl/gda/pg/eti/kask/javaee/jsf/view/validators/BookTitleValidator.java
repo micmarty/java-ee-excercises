@@ -17,18 +17,19 @@ import java.util.regex.Pattern;
 @RequestScoped
 public class BookTitleValidator implements Validator {
 
-    private static final String PATTERN = "^\\p{Lu}(\\p{L}|\\p{N})*([ ](\\p{L}|\\p{N})*)*$";
-    
+//    private static final String PATTERN = "^\\p{Lu}(\\p{L}|\\p{N})*([ ](\\p{L}|\\p{N})*)*$";
+    private static final Integer lowRange = 0;
+    private static final Integer highRange = 100000;
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        if (value instanceof String) {
-            String title = (String) value;
-            if (!Pattern.matches(PATTERN, title)) {
-                throw new ValidatorException(new FacesMessage("Niepoprawny tytuł"));
+        //if (value instanceof Integer) {
+            Integer liczbaDrzew = (Integer) value;
+            if (liczbaDrzew < lowRange || liczbaDrzew > highRange) {
+                throw new ValidatorException(new FacesMessage("Niepoprawna ilość drzew"));
             }
-        } else {
-            throw new ValidatorException(new FacesMessage("Zły obiekt."));
-        }
+        //} else {
+         //   throw new ValidatorException(new FacesMessage("Zły obiekt."));
+        //}
     }
     
 }

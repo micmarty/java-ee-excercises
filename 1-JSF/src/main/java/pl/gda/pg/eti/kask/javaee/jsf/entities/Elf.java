@@ -1,9 +1,6 @@
 package pl.gda.pg.eti.kask.javaee.jsf.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,20 +12,25 @@ import lombok.ToString;
  *
  * @author psysiu
  */
-@ToString(of = "title")
+@ToString
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Book implements Serializable {
+public class Elf implements Serializable {
 
     private int id;
 
-    private String title;
+    private String imie;
 
-    private Date publishDate;
+    private int liczbaStrzal;
 
-    private List<Author> authors = new ArrayList<>();
+    private enum RodzajLuku {
+        DREWNIANY,
+        KARBONOWY,
+        JESIONOWY,
+        LESZCZYNOWY
+    };
 
 }

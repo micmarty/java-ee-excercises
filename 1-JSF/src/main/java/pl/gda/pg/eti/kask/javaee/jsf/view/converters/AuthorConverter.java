@@ -6,8 +6,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import pl.gda.pg.eti.kask.javaee.jsf.entities.Author;
-import pl.gda.pg.eti.kask.javaee.jsf.BookService;
+import pl.gda.pg.eti.kask.javaee.jsf.entities.Elf;
+import pl.gda.pg.eti.kask.javaee.jsf.KatalogService;
 
 /**
  *
@@ -17,11 +17,11 @@ import pl.gda.pg.eti.kask.javaee.jsf.BookService;
 @RequestScoped
 public class AuthorConverter implements Converter {
 
-    @ManagedProperty("#{bookService}")
-    private BookService bookService;
+    @ManagedProperty("#{katalogService}")
+    private KatalogService katalogService;
 
-    public void setBookService(BookService bookService) {
-        this.bookService = bookService;
+    public void setKatalogService(KatalogService katalogService) {
+        this.katalogService = katalogService;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class AuthorConverter implements Converter {
         if ("---".equals(value)) {
             return null;
         }
-        return bookService.findAuthor(Integer.parseInt(value));
+        return katalogService.findElf(Integer.parseInt(value));
     }
 
     @Override
@@ -37,6 +37,6 @@ public class AuthorConverter implements Converter {
         if (value == null) {
             return "---";
         }
-        return ((Author) value).getId() + "";
+        return ((Elf) value).getId() + "";
     }
 }

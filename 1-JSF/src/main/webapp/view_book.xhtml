@@ -4,20 +4,20 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <f:metadata>
-        <f:viewParam name="bookId" value="#{viewBook.bookId}" required="true" id="bookId" />
-        <f:event type="preRenderView" listener="#{viewBook.init()}"/>
+        <f:viewParam name="lasId" value="#{viewLas.lasId}" required="true" id="lasId" />
+        <f:event type="preRenderView" listener="#{viewLas.init()}"/>
     </f:metadata>
     <h:head>
-        <title>#{viewBook.book}</title>
+        <title>#{viewLas.las}</title>
     </h:head>
     <h:body>
         <h:panelGrid columns="2">
             <h:outputLabel value="Tytuł:" for="title"/>
-            <h:outputText id="title" value="#{viewBook.book.title}"/>
-            <h:outputLabel value="Data wydania:" for="date"/>
-            <h:outputText id="date" value="#{viewBook.book.publishDate}">
-                <f:convertDateTime pattern="yyyy-MM-dd"/>
-            </h:outputText>
+            <h:outputText id="title" value="#{viewLas.las.liczbaDrzew}"/>
+            <!--<h:outputLabel value="Data wydania:" for="date"/>-->
+            <!--<h:outputText id="date" value="#{viewLas.las.publishDate}">-->
+                <!--<f:convertDateTime pattern="yyyy-MM-dd"/>-->
+            <!--</h:outputText>-->
         </h:panelGrid>
         <h:button value="Powrót" outcome="list_books.xhtml"/>
     </h:body>

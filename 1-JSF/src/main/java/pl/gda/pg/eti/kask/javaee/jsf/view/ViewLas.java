@@ -1,6 +1,6 @@
 package pl.gda.pg.eti.kask.javaee.jsf.view;
 
-import pl.gda.pg.eti.kask.javaee.jsf.BookService;
+import pl.gda.pg.eti.kask.javaee.jsf.KatalogService;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
-import pl.gda.pg.eti.kask.javaee.jsf.entities.Book;
+import pl.gda.pg.eti.kask.javaee.jsf.entities.Las;
 
 /**
  *
@@ -20,28 +20,28 @@ import pl.gda.pg.eti.kask.javaee.jsf.entities.Book;
 @ViewScoped
 @ManagedBean
 @Log
-public class ViewBook implements Serializable {
+public class ViewLas implements Serializable {
 
-    @ManagedProperty("#{bookService}")
-    private BookService bookService;
-
-    @Getter
-    @Setter
-    private int bookId;
+    @ManagedProperty("#{katalogService}")
+    private KatalogService katalogService;
 
     @Getter
     @Setter
-    private Book book;
+    private int lasId;
 
-    public void setBookService(BookService bookService) {
-        this.bookService = bookService;
+    @Getter
+    @Setter
+    private Las las;
+
+    public void setKatalogService(KatalogService katalogService) {
+        this.katalogService = katalogService;
     }
     
     public void init() {
-        if (book == null) {
-            book = bookService.findBook(bookId);
+        if (las == null) {
+            las = katalogService.findLas(lasId);
         }
-        if (book == null) {
+        if (las == null) {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("error/404.xhtml");
             } catch (IOException ex) {

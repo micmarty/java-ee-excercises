@@ -3,9 +3,9 @@ package pl.gda.pg.eti.kask.javaee.jsf.view;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
-import pl.gda.pg.eti.kask.javaee.jsf.BookService;
-import pl.gda.pg.eti.kask.javaee.jsf.entities.Author;
-import pl.gda.pg.eti.kask.javaee.jsf.entities.Book;
+import pl.gda.pg.eti.kask.javaee.jsf.KatalogService;
+import pl.gda.pg.eti.kask.javaee.jsf.entities.Elf;
+import pl.gda.pg.eti.kask.javaee.jsf.entities.Las;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -25,42 +25,42 @@ import java.util.logging.Level;
 @ViewScoped
 @ManagedBean
 @Log
-public class EditBook implements Serializable {
+public class EditLas implements Serializable {
 
-    @ManagedProperty("#{bookService}")
-    private BookService bookService;
-
-    @Getter
-    @Setter
-    private int bookId;
+    @ManagedProperty("#{katalogService}")
+    private KatalogService katalogService;
 
     @Getter
     @Setter
-    private Book book;
+    private int lasId;
+
+    @Getter
+    @Setter
+    private Las las;
     
     private List<SelectItem> authorsAsSelectItems;
 
-    public void setBookService(BookService bookService) {
-        this.bookService = bookService;
+    public void setkatalogService(KatalogService katalogService) {
+        this.katalogService = katalogService;
     }
     
     public List<SelectItem> getAuthorsAsSelectItems() {
         if (authorsAsSelectItems == null) {
             authorsAsSelectItems = new ArrayList<>();
-            for (Author author : bookService.findAllAuthors()) {
-                authorsAsSelectItems.add(new SelectItem(author, author.getName() + " " + author.getSurname()));
+            for (Elf author : katalogService.findAllElfy()) {
+                authorsAsSelectItems.add(new SelectItem(author, author.getImie() + " " + author.getLiczbaStrzal()));
             }
         }
         return authorsAsSelectItems;
     }
 
     public void init() {
-        if (book == null && bookId != 0) {
-            book = bookService.findBook(bookId);
-        } else if (book == null && bookId == 0) {
-            book = new Book();
+        if (las == null && lasId != 0) {
+            las = katalogService.findLas(lasId);
+        } else if (las == null && lasId == 0) {
+            las = new Las();
         }/**/
-        if (book == null) {
+        if (las == null) {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("error/404.xhtml");
             } catch (IOException ex) {
@@ -69,8 +69,8 @@ public class EditBook implements Serializable {
         }
     }
 
-    public String saveBook() {
-        bookService.saveBook(book);
+    public String saveLas() {
+        katalogService.saveLas(las);
         return "list_books?faces-redirect=true";
     }
 }
