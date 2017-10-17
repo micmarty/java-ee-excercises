@@ -47,10 +47,11 @@
                         </h:column>
 
                         <!-- Pokaz Elfa -->
-                        <!-- <h:column>
-                            
-                        </h:column> -->
-
+                        <h:column>
+                            <h:button value="Pokaż" outcome="view_elf.xhtml">
+                                <f:param name="elfId" value="#{elf.id}" />
+                            </h:button>
+                        </h:column>
                         <!-- Edytuj Elfa -->
                         <h:column>
                             <h:button value="Edytuj" outcome="edit_elf.xhtml">
