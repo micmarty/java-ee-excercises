@@ -17,13 +17,19 @@
             <h:inputText id="imie" value="#{editElf.elf.imie}" />
             <h:message for="imie" />
 
+            <h:outputLabel value="Liczba strzal:" for="liczbaStrzal" />
+            <h:inputText id="liczbaStrzal" value="#{editElf.elf.liczbaStrzal}"  converter="javax.faces.Integer"/>
+            <h:message for="liczbaStrzal" />
+
+
             <!-- Las w ktorym mieszka Elf -->
-            <h:outputLabel value="Miejsce zamieszkania:" for="lasy" />
+            <!-- TODO wyrzuca error null przy submit, ale wyswietla -->
+            <!--<h:outputLabel value="Miejsce zamieszkania:" for="lasy" />-->
 
 
-            <h:selectOneListbox id="lasy" value="#{listLasty.lasy}" converter="#{lasConverter}">
-                <f:selectItems value="#{editElf.lasyDoZamieszkaniaAsSelectItems}" />
-            </h:selectOneListbox>
+            <!--<h:selectOneListbox id="lasy" value="#{listLasty.lasy}" converter="#{lasConverter}">-->
+                <!--<f:selectItems value="#{editElf.lasyDoZamieszkaniaAsSelectItems}" />-->
+            <!--</h:selectOneListbox>-->
         </h:panelGrid>
 
         <h:commandButton value="Zapisz" action="#{editElf.saveElf()}" />
