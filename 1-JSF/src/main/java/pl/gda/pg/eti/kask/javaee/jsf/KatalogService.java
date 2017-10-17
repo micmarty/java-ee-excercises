@@ -63,6 +63,13 @@ public class KatalogService implements Serializable {
         lasy.remove(las.getId());
     }
 
+    public void saveElf(Elf elf) { 
+        if (elf.getId() == 0) { 
+            elf.setId(elfy.lastKey() + 1); 
+        } 
+        elfy.put(elf.getId(), elf); 
+    }
+
     public void saveLas(Las las) {
         if (las.getId() == 0) {
             las.setId(lasy.lastKey() + 1);

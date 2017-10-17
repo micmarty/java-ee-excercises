@@ -48,11 +48,15 @@
 
                         <!-- Pokaz Elfa -->
                         <!-- <h:column>
+                            
                         </h:column> -->
 
                         <!-- Edytuj Elfa -->
-                        <!-- <h:column>
-                        </h:column> -->
+                        <h:column>
+                            <h:button value="Edytuj" outcome="edit_elf.xhtml">
+                                <f:param name="elfId" value="#{elf.id}" />
+                            </h:button>
+                        </h:column>
 
 
 
@@ -61,8 +65,9 @@
             </c:forEach>
         </ul>
         <h:button value="Nowy las" outcome="edit_las.xhtml" />
+        <h:button value="Nowy elf" outcome="edit_elf.xhtml" />
     </ui:composition>
-    
+
 </h:body>
 
 </html>
