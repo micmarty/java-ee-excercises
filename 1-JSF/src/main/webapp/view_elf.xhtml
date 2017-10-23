@@ -17,6 +17,7 @@
 
             <h:outputLabel value="Liczba strzał: " for="strzal"/>
             <h:outputText id="strzal" value="#{viewElf.elf.liczbaStrzal}"/>
+            <h:outputText id="rodzajLuku" value="#{viewElf.elf.rodzajLuku}" converter="#{lukConverter}"/>
         </h:panelGrid>
         <h:button value="Powrót" outcome="list_books.xhtml"/>
     </h:body>

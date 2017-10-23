@@ -21,6 +21,10 @@
             <h:inputText id="liczbaStrzal" value="#{editElf.elf.liczbaStrzal}"  converter="javax.faces.Integer"/>
             <h:message for="liczbaStrzal" />
 
+            <!-- Edycja rodzaju luku - enum -->
+            <h:selectOneMenu value="#{editElf.elf.rodzajLuku}">
+                <f:selectItems value="#{editElf.elf.rodzajLukuOptions}" converter="#{lukConverter}"></f:selectItems>
+            </h:selectOneMenu>
 
             <!-- Las w ktorym mieszka Elf -->
             <!-- TODO wyrzuca error null przy submit, ale wyswietla -->

@@ -26,12 +26,12 @@ public class KatalogService implements Serializable {
     private final SortedMap<Integer, Elf> elfy;
 
     public KatalogService() {
-        Elf elf1 = new Elf(1, "Shira", 10);
-        Elf elf2 = new Elf(2, "Menei", 20);
+        Elf elf1 = new Elf(1, "Shira", 10, Elf.RodzajLuku.DREWNIANY );
+        Elf elf2 = new Elf(2, "Menei", 20, Elf.RodzajLuku.DREWNIANY);
         Las dzikusy = new Las(1, 4, asList(elf1, elf2));
 
-        Elf elf3 = new Elf(3, "Artem", 44);
-        Elf elf4 = new Elf(4, "Ahus", 999);
+        Elf elf3 = new Elf(3, "Artem", 44,Elf.RodzajLuku.JESIONOWY);
+        Elf elf4 = new Elf(4, "Ahus", 999, Elf.RodzajLuku.JESIONOWY);
         Las cywilizowani = new Las(2, 44, asList(elf3, elf4));
 
         lasy = new TreeMap<>();
