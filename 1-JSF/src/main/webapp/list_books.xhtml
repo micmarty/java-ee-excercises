@@ -46,6 +46,11 @@
                             <h:outputText value="#{elf.liczbaStrzal}" />
                         </h:column>
 
+                        <h:column>
+                            <f:facet name="header">Rodzaj łuku</f:facet>
+                            <h:outputText id="rodzajLuku" value="#{elf.rodzajLuku}" converter="#{lukConverter}"/>
+                        </h:column>
+
                         <!-- Pokaz Elfa -->
                         <h:column>
                             <h:button value="Pokaż" outcome="view_elf.xhtml">
