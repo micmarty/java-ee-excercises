@@ -10,6 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import pl.gda.pg.eti.kask.javaee.jsf.KatalogService;
+
+import javax.faces.bean.ManagedProperty;
 
 /**
  *
@@ -27,6 +30,16 @@ public class Las implements Serializable {
 
     private int liczbaDrzew;
 
-    private List<Elf> elfy = new ArrayList<>();
+
+    // Las nie zawiera elfów
+    @ManagedProperty("#{katalogService}")
+    private KatalogService katalogService;
+    public void setkatalogService(KatalogService katalogService) {
+        this.katalogService = katalogService;
+    }
+
+    public List<Elf> getElfy(){
+        return katalogService.findAllElfy(this.id);
+    }
 
 }

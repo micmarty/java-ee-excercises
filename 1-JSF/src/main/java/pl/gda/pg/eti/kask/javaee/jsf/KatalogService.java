@@ -26,13 +26,13 @@ public class KatalogService implements Serializable {
     private final SortedMap<Integer, Elf> elfy;
 
     public KatalogService() {
-        Elf elf1 = new Elf(1, "Shira", 10, Elf.RodzajLuku.DREWNIANY );
-        Elf elf2 = new Elf(2, "Menei", 20, Elf.RodzajLuku.DREWNIANY);
-        Las dzikusy = new Las(1, 4, asList(elf1, elf2));
+        Las dzikusy = new Las(1, 4, this);
+        Elf elf1 = new Elf(1, "Shira", 10, Elf.RodzajLuku.DREWNIANY,dzikusy.getId() );
+        Elf elf2 = new Elf(2, "Menei", 20, Elf.RodzajLuku.DREWNIANY, dzikusy.getId());
 
-        Elf elf3 = new Elf(3, "Artem", 44,Elf.RodzajLuku.JESIONOWY);
-        Elf elf4 = new Elf(4, "Ahus", 999, Elf.RodzajLuku.JESIONOWY);
-        Las cywilizowani = new Las(2, 44, asList(elf3, elf4));
+        Las cywilizowani = new Las(2, 44, this);
+        Elf elf3 = new Elf(3, "Artem", 44,Elf.RodzajLuku.JESIONOWY, cywilizowani.getId());
+        Elf elf4 = new Elf(4, "Ahus", 999, Elf.RodzajLuku.JESIONOWY,cywilizowani.getId());
 
         lasy = new TreeMap<>();
         lasy.put(dzikusy.getId(), dzikusy);
@@ -80,8 +80,20 @@ public class KatalogService implements Serializable {
     public List<Elf> findAllElfy() {
         return new ArrayList<>(elfy.values());
     }
-    
+    public List<Elf> findAllElfy(int id) {
+        List<Elf> result = new ArrayList<>();
+
+        for (Elf elf: elfy.values()) {
+            if (elf.lasId == id) {
+                result.add(elf);
+            }
+        }
+        return result;
+    }
     public Elf findElf(int id) {
         return elfy.get(id);
+    }
+    public void removeElf(Elf elf){
+        elfy.remove(elf.getId());
     }
 }

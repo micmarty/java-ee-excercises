@@ -65,7 +65,12 @@
                             </h:button>
                         </h:column>
 
-
+                        <!-- Usun las -->
+                        <h:column>
+                            <h:form>
+                                <h:commandButton value="Usuń" action="#{listLasy.removeElf(elf)}" />
+                            </h:form>
+                        </h:column>
 
                     </h:dataTable>
                 </li>

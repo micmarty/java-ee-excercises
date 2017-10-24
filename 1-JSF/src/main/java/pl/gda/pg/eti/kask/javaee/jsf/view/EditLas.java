@@ -59,6 +59,7 @@ public class EditLas implements Serializable {
             las = katalogService.findLas(lasId);
         } else if (las == null && lasId == 0) {
             las = new Las();
+            las.setkatalogService(katalogService);
         }/**/
         if (las == null) {
             try {

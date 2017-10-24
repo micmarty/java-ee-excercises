@@ -27,13 +27,13 @@
                 <!--</h:inputText>-->
                 <!--<h:message for="date"/>-->
 
-                <h:outputLabel value="Mieszkańcy:" for="elfy"/>
+                <!--<h:outputLabel value="Mieszkańcy:" for="elfy"/>-->
 
-                <h:selectManyListbox id="elfy" value="#{editLas.las.elfy}" converter="#{authorConverter}">
-                    <f:selectItems value="#{editLas.authorsAsSelectItems}"/>
-                </h:selectManyListbox>
+                <!--<h:selectManyListbox id="elfy" value="#{editLas.las.getElfy()}" converter="#{authorConverter}">-->
+                    <!--<f:selectItems value="#{editLas.authorsAsSelectItems}"/>-->
+                <!--</h:selectManyListbox>-->
 
-                <h:message for="elfy"/>
+                <!--<h:message for="elfy"/>-->
             </h:panelGrid>
             
             <h:commandButton value="Zapisz" action="#{editLas.saveLas()}"/>

@@ -7,6 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
+import pl.gda.pg.eti.kask.javaee.jsf.entities.Elf;
 import pl.gda.pg.eti.kask.javaee.jsf.entities.Las;
 
 /**
@@ -35,5 +37,9 @@ public class ListLasy implements Serializable {
     public void removeLas(Las las) {
         katalogService.removeLas(las);
         lasy.remove(las);
+    }
+
+    public void removeElf(Elf elf) {
+        katalogService.removeElf(elf);
     }
 }

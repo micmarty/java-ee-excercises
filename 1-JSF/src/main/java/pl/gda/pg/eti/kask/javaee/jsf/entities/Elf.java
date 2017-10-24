@@ -30,6 +30,8 @@ public class Elf implements Serializable {
     private int liczbaStrzal;
     private RodzajLuku rodzajLuku;
 
+
+    public int lasId;
     public enum RodzajLuku {
         DREWNIANY,
         KARBONOWY,
