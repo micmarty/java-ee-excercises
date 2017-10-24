@@ -27,12 +27,12 @@ public class KatalogService implements Serializable {
 
     public KatalogService() {
         Las dzikusy = new Las(1, 4, this);
-        Elf elf1 = new Elf(1, "Shira", 10, Elf.RodzajLuku.DREWNIANY,dzikusy.getId() );
-        Elf elf2 = new Elf(2, "Menei", 20, Elf.RodzajLuku.DREWNIANY, dzikusy.getId());
+        Elf elf1 = new Elf(1, "Shira", 10, Elf.RodzajLuku.DREWNIANY,dzikusy );
+        Elf elf2 = new Elf(2, "Menei", 20, Elf.RodzajLuku.DREWNIANY, dzikusy);
 
         Las cywilizowani = new Las(2, 44, this);
-        Elf elf3 = new Elf(3, "Artem", 44,Elf.RodzajLuku.JESIONOWY, cywilizowani.getId());
-        Elf elf4 = new Elf(4, "Ahus", 999, Elf.RodzajLuku.JESIONOWY,cywilizowani.getId());
+        Elf elf3 = new Elf(3, "Artem", 44,Elf.RodzajLuku.JESIONOWY, cywilizowani);
+        Elf elf4 = new Elf(4, "Ahus", 999, Elf.RodzajLuku.JESIONOWY,cywilizowani);
 
         lasy = new TreeMap<>();
         lasy.put(dzikusy.getId(), dzikusy);
@@ -84,7 +84,7 @@ public class KatalogService implements Serializable {
         List<Elf> result = new ArrayList<>();
 
         for (Elf elf: elfy.values()) {
-            if (elf.lasId == id) {
+            if (elf.las.getId() == id) {
                 result.add(elf);
             }
         }

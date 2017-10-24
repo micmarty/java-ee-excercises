@@ -27,8 +27,10 @@
             </h:selectOneMenu>
 
             <!-- Las w ktorym mieszka Elf -->
-            <!-- TODO wyrzuca error null przy submit, ale wyswietla -->
-            <!--<h:outputLabel value="Miejsce zamieszkania:" for="lasy" />-->
+            <h:selectOneMenu id="las" value="#{editElf.elf.las}" converter="#{lasConverter}">
+                <f:selectItems value="#{listLasy.getLasy()}"></f:selectItems>
+            </h:selectOneMenu>
+
 
 
             <!--<h:selectOneListbox id="lasy" value="#{listLasty.lasy}" converter="#{lasConverter}">-->
