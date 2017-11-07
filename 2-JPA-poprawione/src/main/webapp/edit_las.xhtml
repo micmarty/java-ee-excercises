@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:metadata>
+        <f:viewParam name="lasId" value="#{editLas.lasId}" />
+        <f:event type="preRenderView" listener="#{editLas.init()}"/>
+    </f:metadata>
+    <h:head>
+        <title>#{editLas.las}</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <h:panelGrid columns="3" styleClass="tabela">
+                
+                <h:outputLabel value="#{msg.treeNumber}:" for="trees"/>
+                <h:inputText id="trees" value="#{editLas.las.liczbaDrzew}" />
+                <h:message for="trees"/>
+                
+            </h:panelGrid>
+            
+            <h:commandButton value="#{msg.save}" action="#{editLas.saveLas()}"/>
+
+        </h:form>
+        <h:button value="#{msg.back}" outcome="list_elves.xhtml"/>
+    </h:body>
+</html>

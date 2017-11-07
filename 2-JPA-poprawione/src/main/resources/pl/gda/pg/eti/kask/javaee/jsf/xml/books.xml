@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.eti.pg.gda.pl/kask/javaee/books"
+    xsi:schemaLocation="http://www.eti.pg.gda.pl/kask/javaee/books">
+    <book id="1" title="Jestem Grimalkin" publishDate="2013-03-13" cover="HARD">
+        <author id="1" name="Joseph" surname="Delaney"></author>
+    </book>
+    <book id="2" title="W przededniu " publishDate="2013-03-19">
+        <author id="2" name="Orson Scott" surname="Card"></author>
+        <author id="3" name="Aaron" surname="Johnston"></author>
+    </book>
+</library>
