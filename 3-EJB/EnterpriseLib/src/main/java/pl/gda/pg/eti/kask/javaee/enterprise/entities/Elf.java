@@ -1,6 +1,7 @@
 package pl.gda.pg.eti.kask.javaee.enterprise.entities;
 
 import lombok.*;
+import pl.gda.pg.eti.kask.javaee.enterprise.entities.validators.DobrzeWyposazony;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,6 +34,7 @@ public class Elf  implements Serializable {
     @Column
     private String imie;
 
+    @DobrzeWyposazony(value="100")
     @Column
     private Integer liczbaStrzal;
 

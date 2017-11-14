@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.*;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.validators.InNumber;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,7 +34,6 @@ public class Las implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @InNumber(value="1")
     @Column
     private int liczbaDrzew;
 
