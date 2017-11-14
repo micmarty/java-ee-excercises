@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Elfy</title>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+    <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+        <!-- Lista lasow -->
+        <ul>
+            <c:forEach items="#{listLasy.lasy}" var="las">
+
+                <!-- Jeden Las -->
+                <li>
+                    <!-- Nazwa lasu -->
+                    <h:outputText value="Las nr #{las.id} ma #{las.liczbaDrzew} drzew" />
+
+                    <!-- Edytuj Las -->
+                    <h:button value="Edytuj" outcome="edit_las.xhtml">
+                        <f:param name="lasId" value="#{las.id}" />
+                    </h:button>
+
+                    <!-- Usun las -->
+                    <h:form>
+                        <h:commandButton value="Usuń" action="#{listLasy.usunLas(las)}" />
+                    </h:form>
+
+                    <!-- Tabela z Elfami -->
+                    <h:dataTable value="#{las.elfyLasu}" var="elf" border="2" bgcolor="gray">
+                        <!-- Imie elfa -->
+                        <h:column>
+                            <f:facet name="header">Imię</f:facet>
+                            <h:outputText value="#{elf.imie}" />
+                        </h:column>
+
+                        <!-- Liczba Strzal -->
+                        <h:column>
+                            <f:facet name="header">Liczba strzał</f:facet>
+                            <h:outputText value="#{elf.liczbaStrzal}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Rodzaj łuku</f:facet>
+                            <h:outputText id="rodzajLuku" value="#{elf.rodzajeLuku}" />
+                        </h:column>
+
+                        <!-- Pokaz Elfa -->
+                        <h:column>
+                            <h:button value="Pokaż" outcome="view_elf.xhtml">
+                                <f:param name="elfId" value="#{elf.id}" />
+                            </h:button>
+                        </h:column>
+
+                        <!-- Edytuj Elfa -->
+                        <h:column>
+                            <h:button value="Edytuj" outcome="edit_elf.xhtml">
+                                <f:param name="elfId" value="#{elf.id}" />
+                            </h:button>
+                        </h:column>
+
+                        <!-- Usun elfa -->
+                        <h:column>
+                            <h:form>
+                                <h:commandButton value="Usuń" action="#{listLasy.usunElf(elf)}" />
+                            </h:form>
+                        </h:column>
+
+                    </h:dataTable>
+                </li>
+            </c:forEach>
+        </ul>
+        <h:button value="Nowy las" outcome="edit_las.xhtml" />
+        <h:button value="Nowy elf" outcome="edit_elf.xhtml" />
+        <h:form>
+            <h:inputText binding="#{ilosc}" id="liczbaStrzal" />
+            <h:commandButton value="Dodawanie strzał" action="#{dodajStrzaly.dodajStrzaly(ilosc.value)}"/>
+        </h:form>
+    </ui:composition>
+</h:body>
+
+</html>

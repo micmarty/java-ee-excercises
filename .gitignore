@@ -4,3 +4,9 @@
 1-JSF/target/
 
 \.DS_Store
+
+3-EJB/\.idea/
+
+3-EJB/EnterpriseEJB/target/
+
+3-EJB/EnterpriseLib/target/

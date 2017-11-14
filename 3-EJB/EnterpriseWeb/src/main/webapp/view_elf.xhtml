@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:metadata>
+    <f:viewParam name="elfId" value="#{viewElf.elfId}" required="true" id="elfId" />
+    <f:event type="preRenderView" listener="#{viewElf.init()}"/>
+</f:metadata>
+<h:head>
+    <title>#{viewElf.elf}</title>
+</h:head>
+<h:body>
+    TODO
+    <h:panelGrid columns="2">
+        <h:outputLabel value="#{msg.name}" for="name"/>
+        <h:outputText id="name" value="#{viewElf.elf.imie}"/>
+
+        <h:outputLabel value="#{msg.arrowNumber}:" for="arrows"/>
+        <h:outputText id="arrows" value="#{viewElf.elf.liczbaStrzal}"/>
+
+        <h:outputLabel value="#{msg.bowCategory}:" for="bow"/>
+        <h:outputText id="bow" value="#{viewElf.elf.rodzajeLuku}"/>
+
+        <h:outputLabel value="#{msg.forest} id:" for="forest"/>
+        <h:outputText id="forest" value="#{viewElf.elf.las.id}"/>
+    </h:panelGrid>
+    <h:button value="#{msg.back}" outcome="list_elves.xhtml"/>
+</h:body>
+</html>

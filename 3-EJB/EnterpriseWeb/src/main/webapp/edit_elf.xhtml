@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:metadata>
+        <f:viewParam name="elfId" value="#{editElf.elfId}" />
+        <f:event type="preRenderView" listener="#{editElf.init()}"/>
+    </f:metadata>
+    <h:head>
+        <title>#{editElf.elf.imie}</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <h:panelGrid columns="3" styleClass="tabela">
+                <h:outputLabel value="Imie:" for="title"/>
+                <h:inputText id="title"
+                             value="#{editElf.elf.imie}"
+                             />
+                <h:message for="title"/>
+
+                <h:outputLabel value="Liczba strzal:" for="title1"/>
+                <h:inputText id="title1"
+                             value="#{editElf.elf.liczbaStrzal}"
+                             />
+                <h:message for="title1"/>
+
+                <h:outputLabel value="Rodzaj łuku:" for="rodzajLuku"/>
+
+                <h:selectOneMenu id="rodzajLuku" value="#{editElf.elf.rodzajeLuku}" converter="#{rodzajLukuConverter}">
+                    <f:selectItems value="#{editElf.getRodzajLukuAsSelectItemsAsSelectItems()}"/>
+                </h:selectOneMenu>
+
+                <h:message for="rodzajLuku"/>
+
+                <h:outputLabel value="Lasy:" for="lasy"/>
+
+                <h:selectOneMenu id="lasy" value="#{editElf.elf.las}" converter="#{lasConverter}">
+                    <f:selectItems value="#{editElf.lasAsSelectItems}"/>
+                </h:selectOneMenu>
+
+                <h:message for="lasy"/>
+            </h:panelGrid>
+            
+            <h:commandButton value="Zapisz" action="#{editElf.saveElf()}"/>
+
+        </h:form>
+        <h:button value="Powrót" outcome="list_lasy.xhtml"/>
+    </h:body>
+</html>
