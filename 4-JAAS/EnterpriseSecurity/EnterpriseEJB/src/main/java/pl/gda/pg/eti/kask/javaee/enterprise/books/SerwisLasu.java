@@ -189,8 +189,8 @@ public class SerwisLasu implements Serializable{
     }
     @PermitAll
     public void dodajStrzaly(int a) {
-        Query q = em.createNamedQuery(Elf.dojebStrzal);
-        q.setParameter("a", a);
+        Query q = em.createNamedQuery(Elf.dodajStrzal);
+        q.setParameter("dodatkowe_strzaly", a);
         q.executeUpdate();
     }
 

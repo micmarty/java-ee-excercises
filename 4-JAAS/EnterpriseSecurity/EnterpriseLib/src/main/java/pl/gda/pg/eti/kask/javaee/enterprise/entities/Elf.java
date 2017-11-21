@@ -17,13 +17,13 @@ import java.util.List;
 @Table(name = "elfs")
 @NamedQueries({
         @NamedQuery(name = Elf.FIND_ALL, query = "SELECT b FROM Elf b"),
-        @NamedQuery(name = Elf.dojebStrzal, query = "update Elf set liczbaStrzal = liczbaStrzal + :a ")
+        @NamedQuery(name = Elf.dodajStrzal, query = "update Elf set liczbaStrzal = liczbaStrzal + :dodatkowe_strzaly ")
 
 })
 public class Elf  implements Serializable {
 
     public static final String FIND_ALL = "Elf.findAll";
-    public static final String dojebStrzal = "Elf.dojebStrzal";
+    public static final String dodajStrzal = "Elf.dodajStrzal";
 
 
     @Column
