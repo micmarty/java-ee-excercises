@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Książki</title>
+    </h:head>
+    <h:body>
+        <h:dataTable value="#{listLasy.lasy}" var="las">
+            <h:column>
+                <h:outputText value="#{las.id}" />
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{las.liczbaDrzew}" escape="true" />
+            </h:column>
+
+            <h:column>
+                <h:dataTable value="#{las.elfyLasu}" var="elf">
+                    <h:column>
+                        <h:outputText value="#{elf.id}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{elf.imie}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{elf.liczbaStrzal}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{elf.rodzajeLuku}"/>
+                    </h:column>
+                    <h:column>
+                        <h:button value="Edytuj" outcome="edit_elf.xhtml">
+                            <f:param name="elfId" value="#{elf.id}" />
+                        </h:button>
+                    </h:column>
+                    <h:column>
+                        <h:form>
+                            <h:commandButton value="Usuń elfa"
+                                             action="#{listLasy.usunElf(elf)}"/>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+
+
+            <!--<h:column>-->
+                <!--<h:button value="Pokaż" outcome="view_book.xhtml">-->
+                    <!--<f:param name="bookId" value="#{las.id}" />-->
+                <!--</h:button>-->
+            <!--</h:column>-->
+
+            <h:column>
+                <h:button value="Edytuj las" outcome="edit_las.xhtml">
+                    <f:param name="lasId" value="#{las.id}" />
+                </h:button>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Usuń"
+                                     action="#{listLasy.usunLas(las)}"/>
+                </h:form>
+            </h:column>
+
+            <!--<h:column>-->
+                <!--&lt;!&ndash;<form action="/delete/">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="hidden" name="id" value="2"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="submit"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+
+
+            <!--</h:column>-->
+        </h:dataTable>
+        <h:button value="Nowy elf" outcome="edit_elf.xhtml"/>
+        <h:button value="Nowa las" outcome="edit_las.xhtml"/>
+        <h:form>
+            <h:inputText binding="#{ilosc}" id="liczbaStrzal" />
+            <h:commandButton value="Dodawanie strzał" action="#{dodajStrzaly.dodajStrzaly(ilosc.value)}"/>
+        </h:form>
+        <h:form rendered="#{authContext.authenticated}">
+            <hr/>
+            <h:outputText value="Logged in as: #{authContext.userLogin}"/>
+            <br/>
+            <h:commandButton action="#{authContext.logout()}" value="Logout"/>
+        </h:form>
+
+    </h:body>
+</html>
