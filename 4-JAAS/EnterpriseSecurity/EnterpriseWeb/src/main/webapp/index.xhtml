@@ -9,12 +9,12 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:link outcome="books/list_lasy.xhtml" value="#{msg.lasy}"/>
+        <h:link outcome="books/list_lasy.xhtml" value="JAAS Lasy"/>
         <br/>
-        <h:link outcome="books/list_books.xhtml" value="#{msg.books}"/>
-        <br/>
-        <h:link outcome="books/list_authors.xhtml" value="#{msg.authors}"/>
-        <br/>
+        <!--<h:link outcome="books/list_books.xhtml" value="#{msg.books}"/>-->
+        <!--<br/>-->
+        <!--<h:link outcome="books/list_authors.xhtml" value="#{msg.authors}"/>-->
+        <!--<br/>-->
         <h:link outcome="admin/list_users.xhtml" value="#{msg.users}"/>
         <br/>
         <h:link outcome="auth/custom/login_form.xhtml" value="#{msg.login}" rendered="#{not authContext.authenticated}"/>
