@@ -44,4 +44,5 @@ public class ListBooks implements Serializable {
                 book.getOwner().equals(authContext.getCurrentUser());
     }
 
+
 }

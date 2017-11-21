@@ -19,13 +19,16 @@
                         <h:outputText value="Las nr #{las.id} ma #{las.liczbaDrzew} drzew" />
 
                         <!-- Edytuj Las -->
-                        <h:button value="Edytuj" outcome="edit_las.xhtml">
+                        <h:button value="Edytuj" outcome="edit_las.xhtml" rendered="#{listLasy.canEdit(las)}">
                             <f:param name="lasId" value="#{las.id}" />
                         </h:button>
 
+                        <h:outputText value="Właściciel: #{listLasy.ownerName(las)}"/>
+
+
                         <!-- Usun las -->
                         <h:form>
-                            <h:commandButton value="Usuń" action="#{listLasy.usunLas(las)}" />
+                            <h:commandButton value="Usuń (wymagana rola administratora)" action="#{listLasy.usunLas(las)}" />
                         </h:form>
 
                         <!-- Tabela z Elfami -->
@@ -63,6 +66,7 @@
 
                         </h:dataTable>
                     </li>
+                <hr/>
                 </c:forEach>
             </ul>
             <h:button value="Nowy las" outcome="edit_las.xhtml" />

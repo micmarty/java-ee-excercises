@@ -8,10 +8,13 @@ import pl.gda.pg.eti.kask.javaee.enterprise.books.SerwisLasu;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.Elf;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.Las;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.RodzajeLuku;
+import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
 import pl.gda.pg.eti.kask.javaee.enterprise.users.UserService;
+import pl.gda.pg.eti.kask.javaee.enterprise.web.view.auth.AuthContext;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -36,6 +39,10 @@ public class EditElf implements Serializable {
     @EJB
     private UserService userService;
 
+    @ManagedProperty("#{authContext}")
+    @Setter
+    AuthContext authContext;
+
     @Getter
     @Setter
     private int elfId;
@@ -55,10 +62,16 @@ public class EditElf implements Serializable {
     }
 
     public List<SelectItem> getLasAsSelectItems() {
+
+
         if (lasAsSelectItems == null) {
             lasAsSelectItems = new ArrayList<>();
             for (Las las : serwisLasu.dajMnieLasy()) {
-                lasAsSelectItems.add(new SelectItem(las, las.getId() + "" ));
+                // dodaj do listy tylko lasy ktorych jest sie wlascicielem (albo wszystkie jesli admin)
+                if(authContext.isUserInRole(User.Roles.ADMIN) ||
+                        las.getOwner().equals(authContext.getCurrentUser())){
+                    lasAsSelectItems.add(new SelectItem(las, las.getId() + "" ));
+                }
             }
         }
         return lasAsSelectItems;

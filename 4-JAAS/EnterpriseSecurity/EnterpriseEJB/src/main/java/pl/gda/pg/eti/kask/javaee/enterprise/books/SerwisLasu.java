@@ -68,11 +68,13 @@ public class SerwisLasu implements Serializable{
 
 
         for (Las l : listaLasy) {
-            boolean isOwner = l.getOwner().getLogin().equals(login);
-            if (isAdmin || isOwner) {
-                front.add(l);
-
-            }
+            // TODO uncomment
+//            boolean isOwner = l.getOwner().getLogin().equals(login);
+//            if (isAdmin || isOwner) {
+//                front.add(l);
+//
+//            }
+            front.add(l);
         }
 
         return front;
