@@ -1,7 +1,10 @@
 package pl.gda.pg.eti.kask.javaee.enterprise.entities;
 
 public enum RodzajeLuku {
-    FAJNY("FAJNY"), DREWNIANY("DREWNIANY"), METALOWY("METALOWY");
+    JESIONOWY("JESIONOWY"),
+    DREWNIANY("DREWNIANY"),
+    KARBONOWY("KARBONOWY"),
+    LESZCZYNOWY("LESZCZYNOWY");
 
     private String string;
 

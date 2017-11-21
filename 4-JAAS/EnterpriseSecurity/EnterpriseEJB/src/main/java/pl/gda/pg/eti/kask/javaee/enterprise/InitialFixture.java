@@ -2,10 +2,7 @@ package pl.gda.pg.eti.kask.javaee.enterprise;
 
 import lombok.extern.java.Log;
 import pl.gda.pg.eti.kask.javaee.CryptUtils;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Author;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Book;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Comics;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
+import pl.gda.pg.eti.kask.javaee.enterprise.entities.*;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.User.Roles;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
