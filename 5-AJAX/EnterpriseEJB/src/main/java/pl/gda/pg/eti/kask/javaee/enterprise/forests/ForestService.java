@@ -1,11 +1,8 @@
-package pl.gda.pg.eti.kask.javaee.enterprise.books;
+package pl.gda.pg.eti.kask.javaee.enterprise.forests;
 
-import pl.gda.pg.eti.kask.javaee.enterprise.books.auth.OwnerOrAdminAllowed;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Author;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Book;
+import pl.gda.pg.eti.kask.javaee.enterprise.forests.auth.OwnerOrAdminAllowed;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.Forest;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
-import pl.gda.pg.eti.kask.javaee.enterprise.events.BookEvent;
 import pl.gda.pg.eti.kask.javaee.enterprise.events.ForestEvent;
 import pl.gda.pg.eti.kask.javaee.enterprise.events.qualifiers.*;
 
@@ -57,6 +54,7 @@ public class ForestService implements Serializable {
         forestEvent.select(ForestDeletion.Literal).fire(ForestEvent.of(forest));
     }
 
+    //@PermitAll
     @RolesAllowed({User.Roles.ADMIN, User.Roles.USER})
     @OwnerOrAdminAllowed
     public void saveForest(Forest forest) {

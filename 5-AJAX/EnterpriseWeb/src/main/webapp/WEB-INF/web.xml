@@ -71,7 +71,7 @@
         <mime-type>application/x-font-woff2</mime-type>
     </mime-mapping>
     <welcome-file-list>
-        <welcome-file>/books/list_books.xhtml</welcome-file>
+        <welcome-file>/forests/list_forests.xhtml</welcome-file>
     </welcome-file-list>
     <error-page>
         <exception-type>javax.ejb.EJBAccessException</exception-type>
@@ -102,6 +102,7 @@
         <web-resource-collection>
             <web-resource-name>books management</web-resource-name>
             <url-pattern>/books/*</url-pattern>
+            <url-pattern>/forests/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>ADMIN</role-name>

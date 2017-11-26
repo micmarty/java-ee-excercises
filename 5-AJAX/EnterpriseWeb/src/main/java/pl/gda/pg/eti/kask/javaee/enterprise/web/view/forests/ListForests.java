@@ -1,9 +1,7 @@
 package pl.gda.pg.eti.kask.javaee.enterprise.web.view.forests;
 
 import lombok.Getter;
-import pl.gda.pg.eti.kask.javaee.enterprise.books.BookService;
-import pl.gda.pg.eti.kask.javaee.enterprise.books.ForestService;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Book;
+import pl.gda.pg.eti.kask.javaee.enterprise.forests.ForestService;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.Forest;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
 import pl.gda.pg.eti.kask.javaee.enterprise.web.view.auth.AuthContext;

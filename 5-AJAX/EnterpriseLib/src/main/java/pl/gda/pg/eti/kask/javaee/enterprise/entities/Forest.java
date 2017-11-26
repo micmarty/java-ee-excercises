@@ -1,6 +1,7 @@
 package pl.gda.pg.eti.kask.javaee.enterprise.entities;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Range;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.validators.InPast;
 
 import javax.persistence.*;
@@ -35,7 +36,7 @@ public class Forest implements Serializable {
 
     @Getter
     @Setter
-    @Size(min = 3, max = 200)
+    @Range(min = 3, max = 200)
     private Integer treesNumber;
 
 //    @Getter

@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/main.xhtml">
+    <f:metadata>
+        <f:viewParam name="forest" value="#{editForest.forest}" converter="#{forestConverter}"/>
+        <f:event type="preRenderView" listener="#{editForest.preRenderView()}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <h2>Edit forest in 1 step</h2>
+
+        <h:form id="form" styleClass="form-horizontal">
+            <div class="form-group">
+                <h:outputLabel value="How many trees is in this forest?" for="treesNumber" class="col-sm-2 control-label"/>
+                <div class="col-sm-10">
+                    <p:inputText id="treesNumber" value="#{editForest.forest.treesNumber}" class="form-control" autocomplete="off">
+                        <p:clientValidator event="keyup"/>
+                    </p:inputText>
+                    <p:message for="treesNumber"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <h:commandButton value="${msg.cancel}" action="#{editForest.cancel()}" immediate="true"
+                                     styleClass="btn btn-default"/>
+                    <h:commandButton value="#{msg.save} &#187;" action="#{editForest.saveForest()}"
+                                     styleClass="btn btn-default pull-right"/>
+                </div>
+            </div>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+
+
