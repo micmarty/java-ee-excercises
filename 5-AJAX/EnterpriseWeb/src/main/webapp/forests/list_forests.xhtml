@@ -5,7 +5,20 @@
                 template="/WEB-INF/templates/main.xhtml">
 
     <ui:define name="content">
-        <p:button value="#{msg.newForest}" outcome="edit_forest.xhtml"/>
-        <p:button value="#{msg.newElf}" outcome="edit_elf_1.xhtml"/>
+        <!-- Tabela lasow -->
+        <p:dataTable id="forests" value="#{listForests.forests}" var="f">
+            <!-- Id lasu -->
+            <p:column headerText="ID" width="60">
+                <h:outputText value="#{f.id}"/>
+            </p:column>
+
+            <!-- Liczba drzew -->
+            <p:column headerText="Liczba drzew">
+                <h:outputText value="#{f.treesNumber}"/>
+            </p:column>
+        </p:dataTable>
+
+        <p:button value="Nowy las" outcome="edit_forest.xhtml"/>
+        <p:button value="Nowy elf" outcome="edit_elf_1.xhtml"/>
     </ui:define>
 </ui:composition>
