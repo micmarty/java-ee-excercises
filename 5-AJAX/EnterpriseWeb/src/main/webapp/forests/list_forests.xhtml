@@ -21,6 +21,13 @@
             <p:column headerText="Owner">
                 <h:outputText value="#{f.owner.login}"/>
             </p:column>
+
+            <!-- Elfy -->
+            <p:column headerText="Mieszkańcy">
+                <ui:repeat value="#{f.elves}" var="e">
+                    <h:outputText value="#{e.name}"/><br/>
+                </ui:repeat>
+            </p:column>
         </p:dataTable>
 
         <p:button value="Nowy las" outcome="edit_forest.xhtml"/>

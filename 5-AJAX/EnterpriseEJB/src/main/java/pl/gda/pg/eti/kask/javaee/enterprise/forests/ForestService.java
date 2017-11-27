@@ -1,5 +1,6 @@
 package pl.gda.pg.eti.kask.javaee.enterprise.forests;
 
+import pl.gda.pg.eti.kask.javaee.enterprise.entities.Elf;
 import pl.gda.pg.eti.kask.javaee.enterprise.forests.auth.OwnerOrAdminAllowed;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.Forest;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
@@ -35,6 +36,8 @@ public class ForestService implements Serializable {
         return em.createNamedQuery(Forest.Queries.FIND_ALL, Forest.class).getResultList();
     }
 
+
+
     @PermitAll
     public List<Forest> findRecentForests(int limit) {
         TypedQuery<Forest> query = em.createNamedQuery(Forest.Queries.FIND_MOST_RECENT, Forest.class);
@@ -54,7 +57,6 @@ public class ForestService implements Serializable {
         forestEvent.select(ForestDeletion.Literal).fire(ForestEvent.of(forest));
     }
 
-    //@PermitAll
     @RolesAllowed({User.Roles.ADMIN, User.Roles.USER})
     @OwnerOrAdminAllowed
     public void saveForest(Forest forest) {
@@ -67,15 +69,24 @@ public class ForestService implements Serializable {
         }
     }
 
+    @RolesAllowed({User.Roles.ADMIN, User.Roles.USER})
+    public void saveElf(Elf elf) {
+        if (elf.getId() == null) {
+            em.persist(elf);
+        } else {
+            em.merge(elf);
+        }
+    }
+
+    @PermitAll
+    public Elf findElf(int id) {
+        return em.find(Elf.class, id);
+    }
 //    @PermitAll
 //    public List<Author> findAllAuthors() {
 //        return em.createNamedQuery(Author.Queries.FIND_ALL, Author.class).getResultList();
 //    }
 //
-//    @PermitAll
-//    public Author findAuthor(int id) {
-//        return em.find(Author.class, id);
-//    }
 
 //    @PermitAll
 //    public Map<Author, Long> countForestsPerAuthor() {
@@ -86,12 +97,5 @@ public class ForestService implements Serializable {
 //        return forestsCountPerAuthor;
 //    }
 
-//    @RolesAllowed(User.Roles.ADMIN)
-//    public void saveAuthor(Author author) {
-//        if (author.getId() == null) {
-//            em.persist(author);
-//        } else {
-//            em.merge(author);
-//        }
-//    }
+
 }

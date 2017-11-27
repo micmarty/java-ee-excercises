@@ -39,11 +39,10 @@ public class Forest implements Serializable {
     @Range(min = 3, max = 200)
     private Integer treesNumber;
 
-//    @Getter
-//    @Setter
-//    @Size(min = 1)
-//    @ManyToMany(cascade = {MERGE, DETACH})
-//    private List<Author> authors = new ArrayList<>();
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "homeForest", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Elf> elves = new ArrayList<>();
 
     @Getter
     @Setter

@@ -9,6 +9,7 @@
     <class>pl.gda.pg.eti.kask.javaee.enterprise.entities.Comics</class>
     <class>pl.gda.pg.eti.kask.javaee.enterprise.entities.User</class>
     <class>pl.gda.pg.eti.kask.javaee.enterprise.entities.Forest</class>
+    <class>pl.gda.pg.eti.kask.javaee.enterprise.entities.Elf</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
     <shared-cache-mode>ALL</shared-cache-mode>
