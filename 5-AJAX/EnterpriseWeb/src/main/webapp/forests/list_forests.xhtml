@@ -28,6 +28,14 @@
                     <h:outputText value="#{e.name}"/><br/>
                 </ui:repeat>
             </p:column>
+
+            <!-- Usuwanie lasu -->
+            <p:column rendered="#{listForests.canRemove()}" headerText="#{msg.remove}">
+                <h:form>
+                    <p:commandButton value="#{msg.remove}" actionListener="#{listForests.removeForest(f)}"
+                                     update=":forests" process="@form"/>
+                </h:form>
+            </p:column>
         </p:dataTable>
 
         <p:button value="Nowy las" outcome="edit_forest.xhtml"/>
