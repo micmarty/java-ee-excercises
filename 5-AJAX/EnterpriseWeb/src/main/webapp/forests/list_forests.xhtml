@@ -13,8 +13,13 @@
             </p:column>
 
             <!-- Liczba drzew -->
-            <p:column headerText="Liczba drzew">
+            <p:column headerText="Trees">
                 <h:outputText value="#{f.treesNumber}"/>
+            </p:column>
+
+            <!-- Stworzone przez -->
+            <p:column headerText="Owner">
+                <h:outputText value="#{f.owner.login}"/>
             </p:column>
         </p:dataTable>
 
