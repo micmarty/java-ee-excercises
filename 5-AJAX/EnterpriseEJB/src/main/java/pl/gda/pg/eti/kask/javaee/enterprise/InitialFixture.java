@@ -2,10 +2,7 @@ package pl.gda.pg.eti.kask.javaee.enterprise;
 
 import lombok.extern.java.Log;
 import pl.gda.pg.eti.kask.javaee.CryptUtils;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Author;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Book;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.Comics;
-import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
+import pl.gda.pg.eti.kask.javaee.enterprise.entities.*;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.User.Roles;
 
 import javax.annotation.PostConstruct;
@@ -55,6 +52,16 @@ public class InitialFixture {
 
                 authors.forEach(author -> em.persist(author));
                 em.flush();
+
+
+                List<Forest> forests = asList(
+                        new Forest(10, users.get(0)),
+                        new Forest(20, users.get(1)),
+                        new Forest(30, users.get(2))
+                        );
+                forests.forEach(forest -> em.persist(forest));
+                em.flush();
+
 
                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 List<Book> books = asList(
