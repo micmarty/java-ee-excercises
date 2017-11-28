@@ -25,7 +25,7 @@
             <!-- Elfy -->
             <p:column headerText="Mieszkańcy">
                 <ui:repeat value="#{f.elves}" var="e">
-                    <h:outputText value="#{e.name}"/><br/>
+                    <h:outputText value="#{e.id} #{e.name} #{e.bowType}"/><br/>
                     <!-- Usuwanie elfa -->
                     <p:column rendered="#{listForests.canRemove()}" headerText="#{msg.remove}">
                         <h:form>

@@ -34,6 +34,10 @@ public class EditElf implements Serializable {
     @Setter
     private Elf elf;
 
+    public BowType[] getBowTypes() {
+        return BowType.values();
+    }
+
     @Getter
     List<Forest> availableForests;
 

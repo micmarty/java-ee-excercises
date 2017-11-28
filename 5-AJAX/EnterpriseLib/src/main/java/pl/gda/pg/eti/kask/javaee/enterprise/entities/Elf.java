@@ -45,12 +45,18 @@ public class Elf implements Serializable {
 
     @Getter
     @Setter
+    @Enumerated(EnumType.STRING)
+    private BowType bowType = BowType.JESIONOWY;
+
+    @Getter
+    @Setter
     @ManyToOne
     private User owner;
 
-    public Elf(String name, Forest homeForest, User owner) {
+    public Elf(String name, Forest homeForest, BowType bowType, User owner) {
         this.name = name;
         this.homeForest = homeForest;
+        this.bowType = bowType;
         this.owner = owner;
     }
 }

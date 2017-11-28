@@ -54,11 +54,28 @@ public class InitialFixture {
                 em.flush();
 
 
-                List<Forest> forests = asList(
-                        new Forest(10, users.get(0)),
-                        new Forest(20, users.get(1)),
-                        new Forest(30, users.get(2))
-                        );
+                Elf e1 = new Elf("Misiek", null, BowType.JESIONOWY, users.get(0));
+                Elf e2 = new Elf("Aee", null, BowType.JESIONOWY, users.get(0));
+                Elf e3 = new Elf("Bee", null, BowType.DREWNIANY, users.get(1));
+                Elf e4 = new Elf("Dee", null, BowType.KARBONOWY, users.get(2));
+                Elf e5 = new Elf("Cee", null, BowType.DREWNIANY, users.get(1));
+                Elf e6 = new Elf("Fee", null, BowType.KARBONOWY, users.get(2));
+
+                Forest f1 = new Forest(10, asList(e1,e2), users.get(0));
+                Forest f2 = new Forest(20, asList(e3,e4), users.get(1));
+                Forest f3 = new Forest(30, asList(e5,e6), users.get(2));
+                List<Forest> forests = asList(f1,f2,f3);
+                forests.forEach(forest -> em.persist(forest));
+                em.flush();
+
+                e1.setHomeForest(f1);
+                e2.setHomeForest(f1);
+                e3.setHomeForest(f2);
+                e4.setHomeForest(f2);
+                e5.setHomeForest(f3);
+                e6.setHomeForest(f3);
+
+                List<Elf> elves = asList(e1,e2,e3,e4,e5,e6);
                 forests.forEach(forest -> em.persist(forest));
                 em.flush();
 

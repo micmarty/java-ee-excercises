@@ -50,8 +50,9 @@ public class Forest implements Serializable {
     private User owner;
 
     // TODO dodac parametr authors
-    public Forest(Integer treesNumber, User owner) {
+    public Forest(Integer treesNumber, List<Elf> elves, User owner) {
         this.treesNumber = treesNumber;
+        this.elves = elves;
         this.owner = owner;
     }
 }
