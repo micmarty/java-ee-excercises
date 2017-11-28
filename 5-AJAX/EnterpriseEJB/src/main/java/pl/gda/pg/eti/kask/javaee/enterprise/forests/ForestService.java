@@ -57,6 +57,14 @@ public class ForestService implements Serializable {
         forestEvent.select(ForestDeletion.Literal).fire(ForestEvent.of(forest));
     }
 
+    @RolesAllowed(User.Roles.ADMIN)
+    public void removeElf(Elf elf) {
+        elf = em.merge(elf);
+        em.remove(elf);
+        // TODO
+        //forestEvent.select(ForestDeletion.Literal).fire(ForestEvent.of(elf));
+    }
+
     @RolesAllowed({User.Roles.ADMIN, User.Roles.USER})
     @OwnerOrAdminAllowed
     public void saveForest(Forest forest) {

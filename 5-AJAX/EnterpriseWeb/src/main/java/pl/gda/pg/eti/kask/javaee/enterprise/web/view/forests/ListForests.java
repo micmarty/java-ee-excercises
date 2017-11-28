@@ -1,6 +1,7 @@
 package pl.gda.pg.eti.kask.javaee.enterprise.web.view.forests;
 
 import lombok.Getter;
+import pl.gda.pg.eti.kask.javaee.enterprise.entities.Elf;
 import pl.gda.pg.eti.kask.javaee.enterprise.forests.ForestService;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.Forest;
 import pl.gda.pg.eti.kask.javaee.enterprise.entities.User;
@@ -34,6 +35,11 @@ public class ListForests implements Serializable {
 
     public void removeForest(Forest forest) {
         forestService.removeForest(forest);
+        init();
+    }
+
+    public void removeElf(Elf elf) {
+        forestService.removeElf(elf);
         init();
     }
 
